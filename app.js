@@ -16,6 +16,7 @@
   document.querySelectorAll("[data-src]").forEach((el) => {
     if (C[el.dataset.src]) el.src = C[el.dataset.src]; else el.remove();
   });
+  $("summary").innerHTML = [].concat(C.summary).map((p) => `<p>${esc(p)}</p>`).join("");
   $("year").textContent = new Date().getFullYear();
 
   // years of experience, computed so it never goes stale
@@ -55,7 +56,7 @@
   const renderProjects = (tag) => {
     $("projectList").innerHTML = projects
       .filter((p) => tag === "All" || (p.tags || []).includes(tag))
-      .map((p) => `<li><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p><span class="tags">${(p.tags || []).map(esc).join(", ")}</span></li>`)
+      .map((p) => `<li><h3>${esc(p.title)}</h3>${p.sector ? `<p class="meta">${esc(p.sector)}</p>` : ""}<p>${esc(p.text)}</p><span class="tags">${(p.tags || []).map(esc).join(", ")}</span></li>`)
       .join("");
   };
   $("filters").innerHTML = tags.map((t, i) => `<button type="button" aria-pressed="${i === 0}" data-tag="${esc(t)}">${esc(t)}</button>`).join("");

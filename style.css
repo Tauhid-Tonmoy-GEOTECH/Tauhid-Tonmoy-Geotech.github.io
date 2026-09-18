@@ -34,7 +34,7 @@ nav a:hover{color:var(--ink)}
 .portrait{width:112px;height:112px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--panel)}
 h1{font:600 clamp(2.1rem,4.2vw,3.1rem)/1.1 var(--serif);letter-spacing:-.01em;margin:0 0 .6rem}
 .role{font-size:1.15rem;color:var(--muted);margin:0 0 1.4rem}
-.summary{font:400 1.12rem/1.7 var(--serif);max-width:var(--measure);margin:0 0 1.4rem}
+.summary{font:400 1.1rem/1.7 var(--serif);max-width:var(--measure);margin:0 0 1.4rem}.summary p{margin:0 0 .9rem}
 .facts{color:var(--muted);font-size:.97rem;margin:0 0 1.6rem}
 .actions{display:flex;gap:.75rem;flex-wrap:wrap}
 .btn{display:inline-block;padding:.6rem 1.15rem;border-radius:4px;font-weight:500;text-decoration:none;border:1px solid var(--ink);color:var(--ink)}
@@ -81,9 +81,10 @@ h2{font:600 1.75rem/1.2 var(--serif);margin:0 0 2rem}
 .filters button{font:500 .9rem var(--sans);padding:.4rem .9rem;border:1px solid var(--rule);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .projects{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem}
-.projects li{padding:1.1rem 0;border-bottom:1px solid var(--rule)}
-.projects h3{font:600 1.05rem/1.35 var(--serif);margin:0 0 .3rem}
-.projects p{margin:0 0 .4rem;color:var(--muted);font-size:.97rem}
+.projects li{padding:1.5rem 0;border-bottom:1px solid var(--rule)}
+.projects h3{font:600 1.1rem/1.35 var(--serif);margin:0 0 .3rem}
+.projects p{margin:0 0 .6rem;color:var(--ink);font-size:.98rem;line-height:1.65}.projects .meta{color:var(--muted);font-size:.88rem;margin:0 0 .6rem}
+.lede{color:var(--muted);max-width:var(--measure);margin:-1rem 0 1.8rem}
 .tags{font-size:.82rem;color:var(--accent)}
 
 .research,.edu{list-style:none;padding:0;margin:0}
