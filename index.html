@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tauhidul Islam Tonmoy — Geotechnical Engineer</title>
+<meta name="description" content="Geotechnical engineer in Dhaka, Bangladesh: site investigation, liquefaction hazard assessment and pile foundation analysis.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="#" data-bind="shortName"></a>
+    <nav aria-label="Sections">
+      <a href="#competencies">Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="intro wrap">
+    <div class="intro-text">
+      <img class="portrait" data-src="photo" alt="Portrait of Tauhidul Islam Tonmoy" width="120" height="120">
+      <h1 data-bind="name"></h1>
+      <p class="role"><span data-bind="role"></span>, <span data-bind="location"></span></p>
+      <p class="summary" data-bind="summary"></p>
+      <p class="facts" id="facts"></p>
+      <div class="actions" id="actions"></div>
+    </div>
+
+    <figure class="log" aria-label="Illustrative borehole log with SPT N-value profile">
+      <svg viewBox="0 0 300 460" role="img">
+        <title>Illustrative borehole log</title>
+        <g class="scale">
+          <text x="30" y="16">Depth (m)</text>
+          <text x="232" y="16" text-anchor="middle">SPT N-value</text>
+        </g>
+        <!-- strata -->
+        <rect class="s-fill" x="40" y="30"  width="110" height="40"/>
+        <rect class="s-clay" x="40" y="70"  width="110" height="120"/>
+        <rect class="s-silt" x="40" y="190" width="110" height="90"/>
+        <rect class="s-sand" x="40" y="280" width="110" height="170"/>
+        <g class="s-label">
+          <text x="48" y="54">Fill</text>
+          <text x="48" y="134">Soft silty clay</text>
+          <text x="48" y="240">Loose silt</text>
+          <text x="48" y="370">Dense fine sand</text>
+        </g>
+        <!-- groundwater -->
+        <line class="gwt" x1="20" y1="82" x2="150" y2="82"/>
+        <path class="gwt-mark" d="M28 74 l6 8 l6 -8 z"/>
+        <!-- depth ticks -->
+        <g class="ticks" id="ticks"></g>
+        <!-- N axis -->
+        <line class="axis" x1="172" y1="30" x2="172" y2="450"/>
+        <polyline class="n-trace" id="ntrace" points="199,45 187,75 184,105 187,135 190,165 199,195 205,225 196,255 217,285 229,315 241,345 253,375 265,405 274,435"/>
+        <rect class="liq" x="172" y="190" width="120" height="90"/>
+        <text class="liq-label" x="282" y="276" text-anchor="end">Liquefiable zone</text>
+      </svg>
+      <figcaption>Illustrative profile, not project data.</figcaption>
+    </figure>
+  </section>
+
+  <section id="competencies" class="block wrap">
+    <h2>Technical expertise</h2>
+    <div class="comp" id="competencyList"></div>
+    <h3 class="sub">Software</h3>
+    <dl class="software" id="softwareList"></dl>
+  </section>
+
+  <section id="experience" class="block wrap">
+    <h2>Experience</h2>
+    <ol class="timeline" id="experienceList"></ol>
+  </section>
+
+  <section id="projects" class="block wrap">
+    <h2>Selected projects</h2>
+    <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+    <ul class="projects" id="projectList"></ul>
+  </section>
+
+  <section id="research" class="block wrap" hidden>
+    <h2>Research</h2>
+    <ul class="research" id="researchList"></ul>
+    <ol class="pubs" id="pubList"></ol>
+  </section>
+
+  <section id="education" class="block wrap">
+    <h2>Education</h2>
+    <ul class="edu" id="educationList"></ul>
+  </section>
+
+  <section id="references" class="block wrap refs">
+    <h2>Methods cited</h2>
+    <ol id="refList"></ol>
+  </section>
+
+  <section id="contact" class="block wrap contact">
+    <h2>Contact</h2>
+    <p>For project enquiries or collaboration, write to me.</p>
+    <ul id="contactList"></ul>
+    <p class="note">References available on request.</p>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>© <span id="year"></span> <span data-bind="name"></span></p>
+</footer>
+
+<script src="content.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
