@@ -12,8 +12,8 @@ window.CONTENT = {
   role: "Geotechnical Engineer",
   location: "Dhaka, Bangladesh",
   careerStart: "2018-07",            // used to calculate years of experience automatically
-  photo: "assets/photo.jpg",
-  cv: "",                             // e.g. "assets/cv.pdf" — leave "" to hide the download button
+  photo: "photo.jpg",
+  cv: "",                             // e.g. "cv.pdf" — leave "" to hide the download button
 
   summary:
     "Geotechnical engineer specialising in subsurface investigation, seismic liquefaction hazard assessment and deep-foundation analysis. My work spans the full chain from field and laboratory testing to design: multi-method liquefaction triggering and consequence assessment, and axial pile capacity evaluation that combines analytical methods with PLAXIS-based numerical load-test simulation, delivered to BNBC 2020 and AASHTO LRFD.",
