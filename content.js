@@ -25,7 +25,7 @@ window.CONTENT = {
   contact: {
     email: "tauhid.tonmoy.ak@gmail.com",
     phone: "",                        // leave "" to keep your phone number off the public site
-    linkedin: "",                     // paste your LinkedIn profile link here, e.g. "https://www.linkedin.com/in/your-id"
+    linkedin: "https://www.linkedin.com/in/md-tauhidul-islam-akanda-tonmoy-5209bb1aa",                     // paste your LinkedIn profile link here, e.g. "https://www.linkedin.com/in/your-id"
     researchgate: "",
     scholar: ""
   },
