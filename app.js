@@ -52,11 +52,13 @@
 
   // projects + filter
   const projects = vis(C.projects);
-  const tags = ["All", ...new Set(projects.flatMap((p) => p.tags || []))];
+  const order = ["Foundation design", "Excavation design", "Liquefaction", "Field supervision", "Laboratory testing"];
+  const used = new Set(projects.flatMap((p) => p.tags || []));
+  const tags = ["All", ...order.filter((t) => used.has(t)), ...[...used].filter((t) => !order.includes(t))];
   const renderProjects = (tag) => {
     $("projectList").innerHTML = projects
       .filter((p) => tag === "All" || (p.tags || []).includes(tag))
-      .map((p) => `<li><h3>${esc(p.title)}</h3>${p.sector ? `<p class="meta">${esc(p.sector)}</p>` : ""}<p>${esc(p.text)}</p><span class="tags">${(p.tags || []).map(esc).join(", ")}</span></li>`)
+      .map((p) => `<li><h3>${esc(p.title)}</h3>${p.sector || p.status ? `<p class="meta">${esc(p.sector || "")}${p.status ? ` <span class="status">${esc(p.status)}</span>` : ""}</p>` : ""}<p>${esc(p.text)}</p><span class="tags">${(p.tags || []).map(esc).join(", ")}</span></li>`)
       .join("");
   };
   $("filters").innerHTML = tags.map((t, i) => `<button type="button" aria-pressed="${i === 0}" data-tag="${esc(t)}">${esc(t)}</button>`).join("");
@@ -78,6 +80,12 @@
   // education
   $("educationList").innerHTML = vis(C.education)
     .map((e) => `<li><h3>${esc(e.degree)}</h3><p>${esc(e.org)}, ${esc(e.from)}–${esc(e.to)}</p></li>`).join("");
+
+  // memberships
+  const mem = vis(C.memberships);
+  $("member").textContent = mem.map((m) => m.name + (m.id ? " (" + m.id + ")" : "")).join("; ");
+  if (!mem.length) $("member").remove();
+  $("educationList").innerHTML += mem.map((m) => `<li><h3>${esc(m.name)}</h3>${m.id ? `<p>Membership no. ${esc(m.id)}</p>` : ""}</li>`).join("");
 
   // references
   if ((C.references || []).length) {
