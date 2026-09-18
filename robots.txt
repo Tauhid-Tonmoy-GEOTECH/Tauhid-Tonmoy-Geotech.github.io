@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tauhid-tonmoy-geotech.github.io/sitemap.xml

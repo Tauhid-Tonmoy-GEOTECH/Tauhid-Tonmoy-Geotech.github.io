@@ -115,3 +115,25 @@ h2{font:600 1.75rem/1.2 var(--serif);margin:0 0 2rem}
 @media print{.top,.filters,.log,.actions{display:none}.block{padding:1.2rem 0}}
 @media (max-width:520px){nav{display:none}}
 .status{display:inline-block;margin-left:.5rem;padding:.05rem .5rem;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:.8rem}
+
+.posts,.docs{list-style:none;margin:0;padding:0;max-width:78ch}
+.posts li,.docs li{padding:1.4rem 0;border-bottom:1px solid var(--rule)}
+.posts h3,.docs h3{font:600 1.2rem/1.35 var(--serif);margin:.2rem 0 .5rem}
+.posts h3 a{color:var(--ink);text-decoration:none}.posts h3 a:hover{color:var(--water)}
+.posts p,.docs p{margin:0 0 .6rem}
+.posts .meta,.docs .meta{color:var(--muted);font-size:.88rem;margin:0}
+.more{font-weight:500}
+@media (max-width:520px){.brand{font-size:.95rem}}
+/* article page */
+.article{max-width:72ch;padding:3rem 0 4rem}
+.article h1{font-size:clamp(1.8rem,3.4vw,2.5rem)}
+.article .meta{color:var(--muted);margin:0 0 2rem}
+.article .body{font:400 1.1rem/1.75 var(--serif)}
+.article .body h2{font-size:1.45rem;margin:2.2rem 0 .8rem}
+.article .body h3{font:600 1.2rem var(--serif);margin:1.8rem 0 .6rem}
+.article .body img{margin:1.5rem 0;border-radius:4px}
+.article .body blockquote{margin:1.5rem 0;padding-left:1rem;border-left:3px solid var(--accent);color:var(--muted)}
+.article .body code{font-size:.9em;background:var(--panel);padding:.1rem .3rem;border-radius:3px}
+.article .body table{border-collapse:collapse;display:block;overflow-x:auto;font:400 .95rem var(--sans)}
+.article .body th,.article .body td{border:1px solid var(--rule);padding:.4rem .7rem;text-align:left}
+.back{display:inline-block;margin-top:2.5rem}

@@ -8,7 +8,7 @@
 window.CONTENT = {
 
   name: "Md. Tauhidul Islam Akanda Tonmoy",
-  shortName: "Tauhidul Islam Tonmoy",
+  shortName: "Md. Tauhidul Islam Akanda Tonmoy",   // name shown in the top bar
   role: "Geotechnical Engineer",
   location: "Dhaka, Bangladesh",
   careerStart: "2018-07",            // used to calculate years of experience automatically
@@ -25,7 +25,7 @@ window.CONTENT = {
   contact: {
     email: "tauhid.tonmoy.ak@gmail.com",
     phone: "",                        // leave "" to keep your phone number off the public site
-    linkedin: "",                     // e.g. "https://www.linkedin.com/in/your-id"
+    linkedin: "",                     // paste your LinkedIn profile link here, e.g. "https://www.linkedin.com/in/your-id"
     researchgate: "",
     scholar: ""
   },
@@ -192,6 +192,33 @@ window.CONTENT = {
   /* ---------- Publications (IEEE format) ---------- */
   publications: [
     // { text: "M. T. I. A. Tonmoy and A. B. Author, \"Title of paper,\" Journal, vol. X, no. Y, pp. 1–10, 2026, doi: ...", show: true }
+  ],
+
+  /* ---------- Reports and field observations ----------
+     1. Upload the PDF to GitHub (Add file > Upload files). Use a simple file name without spaces, e.g. "liquefaction-note-2026.pdf"
+     2. Copy one block below, set file: to that exact name, and set show: true
+     type: "Technical report", "Field observation", "Design note" or "Presentation"
+     IMPORTANT: only upload documents you have permission to share (remove client names and confidential data if needed) */
+  documents: [
+    { title: "Example: Liquefaction assessment note",
+      type: "Technical report",
+      date: "2026-09",
+      file: "example.pdf",
+      text: "One or two sentences describing what the document covers.",
+      show: false }
+  ],
+
+  /* ---------- Blog / design notes ----------
+     1. Write your article in a text file ending in .md (see example-post.md for the format) and upload it to GitHub
+     2. Copy one block below, set slug: to the file name WITHOUT .md, and set show: true
+     Newest posts first. */
+  blog: [
+    { title: "Example: Lessons from selecting pile founding depth in soft Dhaka clay",
+      slug: "example-post",
+      date: "2026-09-18",
+      summary: "A two-line summary shown on the home page. Keep it specific; it also helps Google understand the article.",
+      tags: ["Pile design", "Soft clay"],
+      show: false }
   ],
 
   memberships: [

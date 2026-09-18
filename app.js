@@ -5,6 +5,11 @@
   const cite = (s) => esc(s).replace(/\[(\d+)\]/g, '<a href="#ref-$1" aria-label="Reference $1">[$1]</a>');
   const vis = (arr) => (arr || []).filter((x) => x.show !== false);
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const fmtDate = (d) => {
+    if (!d) return "";
+    const [y, m, day] = String(d).split("-");
+    return (day ? +day + " " : "") + (m ? MONTHS[+m - 1] + " " : "") + y;
+  };
   const fmt = (ym) => {
     if (!ym || ym === "present") return "Present";
     const [y, m] = ym.split("-");
@@ -29,6 +34,7 @@
   const acts = [];
   if (C.contact.email) acts.push(`<a class="btn primary" href="mailto:${esc(C.contact.email)}">Email me</a>`);
   if (C.cv) acts.push(`<a class="btn" href="${esc(C.cv)}" download>Download CV</a>`);
+  if (C.contact.linkedin) acts.push(`<a class="btn" href="${esc(C.contact.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`);
   $("actions").innerHTML = acts.join("");
 
   // competencies
@@ -77,6 +83,32 @@
     $("pubList").innerHTML = pubs.map((p) => `<li>${esc(p.text)}</li>`).join("");
   }
 
+  // blog
+  const posts = vis(C.blog);
+  if (posts.length) {
+    $("blog").hidden = false; $("navBlog").hidden = false;
+    $("blogList").innerHTML = posts.map((p) => `
+      <li>
+        <p class="meta">${esc(fmtDate(p.date))}${(p.tags || []).length ? " | " + p.tags.map(esc).join(", ") : ""}</p>
+        <h3><a href="post.html?p=${encodeURIComponent(p.slug)}">${esc(p.title)}</a></h3>
+        <p>${esc(p.summary)}</p>
+        <a class="more" href="post.html?p=${encodeURIComponent(p.slug)}">Read the article</a>
+      </li>`).join("");
+  }
+
+  // documents
+  const docs = vis(C.documents);
+  if (docs.length) {
+    $("documents").hidden = false; $("navDocs").hidden = false;
+    $("docList").innerHTML = docs.map((d) => `
+      <li>
+        <p class="meta">${esc(d.type || "Document")}${d.date ? " | " + esc(fmtDate(d.date)) : ""}</p>
+        <h3>${esc(d.title)}</h3>
+        <p>${esc(d.text || "")}</p>
+        <a class="more" href="${esc(d.file)}" target="_blank" rel="noopener">Open PDF</a>
+      </li>`).join("");
+  }
+
   // education
   $("educationList").innerHTML = vis(C.education)
     .map((e) => `<li><h3>${esc(e.degree)}</h3><p>${esc(e.org)}, ${esc(e.from)}–${esc(e.to)}</p></li>`).join("");
@@ -100,6 +132,25 @@
     if (k[key]) items.push(`<li><a href="${esc(k[key])}" rel="noopener" target="_blank">${label}</a></li>`);
   });
   $("contactList").innerHTML = items.join("");
+
+  // structured data for search engines (schema.org Person)
+  const site = "https://tauhid-tonmoy-geotech.github.io/";
+  const person = {
+    "@context": "https://schema.org", "@type": "Person",
+    name: C.name, alternateName: ["Tauhidul Islam Tonmoy", "Md. Tauhidul Islam Akanda"],
+    jobTitle: "Geotechnical Engineer", url: site, image: site + (C.photo || ""),
+    email: C.contact.email ? "mailto:" + C.contact.email : undefined,
+    worksFor: { "@type": "Organization", name: (C.experience[0] || {}).org },
+    address: { "@type": "PostalAddress", addressLocality: "Dhaka", addressCountry: "BD" },
+    alumniOf: vis(C.education).map((e) => ({ "@type": "CollegeOrUniversity", name: e.org })),
+    memberOf: vis(C.memberships).map((m) => ({ "@type": "Organization", name: "Institution of Engineers, Bangladesh" })),
+    knowsAbout: ["Geotechnical engineering", "Pile foundation design", "Mat foundation design", "Liquefaction analysis",
+      "Braced excavation design", "Sheet pile design", "Soil investigation", "BNBC 2020", "PLAXIS 2D", "GEO5"],
+    sameAs: [C.contact.linkedin, C.contact.researchgate, C.contact.scholar].filter(Boolean)
+  };
+  const ld = document.createElement("script");
+  ld.type = "application/ld+json"; ld.textContent = JSON.stringify(person);
+  document.head.appendChild(ld);
 
   // borehole depth ticks (14 px per metre, 0–30 m)
   let t = "";
